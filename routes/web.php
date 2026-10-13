@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Berita;
 
 Route::get('/', function () {
     return view ('home',[
@@ -19,11 +20,23 @@ Route::get('/Profile', function () {
 });
 
 Route::get('/berita', function () {
+
+    
     return view ('berita', [
-        "title" => "Berita"
+        "title" => "Berita",
+        "beritas" => Berita::ambilberita(),
     ]);
 });
 
+Route::get('/berita/{slug}', function ($slug) {
+
+    return view ('beritatunggal', [
+        "title" => Berita:: gettitle($slug),
+        "berita" => Berita::getBerita($slug),
+    ]);
+});
+
+    
 Route::get('/contact', function () {
     return view ('contact', [
         "title" => "Contact"

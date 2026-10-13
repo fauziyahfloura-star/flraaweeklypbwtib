@@ -2,11 +2,14 @@
 
 @section('content')
 
-    <h1>HALAMAN BERITA</h1>
-    <h2>PENULIS BERITA</h2>
-    <h5>JUDUL BERITA</h5>
+ <div class="mt-5">
+    @foreach ($beritas as $berita)
+    <h2><a href="berita/{{ $berita["slug"] }}">{{ $berita["judul"] }}</a></h2>
+    <h5>Oleh: {{ $berita["penulis"] }}</h5>
     <p>
-        Isi berita akan muncul di sini...
+        {{ $berita["isi"] }}
     </p>
+    @endforeach
+</div>
 
 @endsection
